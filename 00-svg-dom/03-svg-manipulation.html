@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Manipulate SVG elements</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+
+    <!-- Own style -->
+    <style>
+        svg {
+            border: 1px solid #999;
+        }
+
+        footer img {
+            max-height: 3rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="jumbotron">
+            <div class="container">
+                <h1>Manipulate SVG elements</h1>
+                <p class="lead">Once the SVG elements have been identified, you can modify their attributes to JavaScript. In the original
+                    SVG graphic, the colors of the circles were (from outer to inner) blue, red and yellow. You can notice
+                    that they have been changed by JavaScript.</p>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div>
+            <svg viewBox="0 0 100 100" id="mySVG">
+                <circle cx="50" cy="50" r="40" fill="blue" id="outerCircle" />
+                <circle cx="50" cy="50" r="25" fill="red" id="mediumCircle" />
+                <circle cx="50" cy="50" r="10" fill="yellow" id="innerCircle" />
+            </svg>
+        </div>
+    </div>
+    <footer class="mb-5">
+        <div class="container">
+            <hr>
+            <div class="row">
+                <div class="col-sm-4 text-left">
+                    <a href="http://tecfa.unige.ch/perso/mafritz">
+                        <img src="../assets/images/maf-logo.svg" class="img-responsive">
+                    </a>
+                </div>
+                <div class="col-sm-4 text-center">
+                    Last update: 15/03/2018
+                </div>
+                <div class="col-sm-4 text-right">
+                    <a href="http://tecfa.unige.ch">
+                        <img src="../assets/images/tecfa-logo.svg" class="img-responsive">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- JavaScript -->
+    <script>
+        //Identify the circles
+        var theCircles = {
+            outer: document.querySelector("#outerCircle"),
+            medium: document.querySelector("#mediumCircle"),
+            inner: document.querySelector("#innerCircle")
+        }
+        //Modify the color of the circles with JavaScript
+        theCircles.outer.setAttribute("fill", "violet");
+        theCircles.medium.setAttribute("fill", "green");
+        theCircles.inner.setAttribute("fill", "black");
+    </script>
+</body>
+
+</html>
