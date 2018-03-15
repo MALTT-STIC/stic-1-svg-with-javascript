@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Simple integration of an SVG into the DOM</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+
+    <!-- Own style -->
+    <style>
+        svg {
+            border: 1px solid #999;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Simple integration of an SVG into the DOM</h1>
+            <p class="lead">The element below is an SVG graphic.
+                <strong>Open the console of your browser</strong> with
+                <kbd>F12</kbd> to see how you can access it through JavaScript. </p>
+        </div>
+    </div>
+    <div class="container">
+        <div>
+            <svg viewBox="0 0 100 100" id="mySVG">
+                <circle cx="50" cy="50" r="40" fill="blue" />
+                <circle cx="50" cy="50" r="25" fill="red" />
+                <circle cx="50" cy="50" r="10" fill="yellow" />
+            </svg>
+        </div>
+    </div>
+    <!-- JavaScript -->
+    <script>
+        //Identify the element and print it to the console
+        var theSVG = document.querySelector("#mySVG");
+        console.log("This is the result of the document.querySelector(\"#mySVG\") instruction.")
+        console.log(theSVG);
+    </script>
+</body>
+
+</html>
