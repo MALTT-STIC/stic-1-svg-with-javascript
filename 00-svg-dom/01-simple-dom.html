@@ -20,14 +20,16 @@
 </head>
 
 <body>
-    <div class="jumbotron">
-        <div class="container">
-            <h1>Simple integration of an SVG into the DOM</h1>
-            <p class="lead">The element below is an SVG graphic.
-                <strong>Open the console of your browser</strong> with
-                <kbd>F12</kbd> to see how you can access it through JavaScript. </p>
+    <header>
+        <div class="jumbotron">
+            <div class="container">
+                <h1>Simple integration of an SVG into the DOM</h1>
+                <p class="lead">The element below is an SVG graphic.
+                    <strong>Open the console of your browser</strong> with
+                    <kbd>F12</kbd> to see how you can access it through JavaScript. </p>
+            </div>
         </div>
-    </div>
+    </header>
     <div class="container">
         <div>
             <svg viewBox="0 0 100 100" id="mySVG">
@@ -41,8 +43,12 @@
     <script>
         //Identify the element and print it to the console
         var theSVG = document.querySelector("#mySVG");
-        console.log("This is the result of the document.querySelector(\"#mySVG\") instruction.")
+        console.log("This is the result of the document.querySelector(\"#mySVG\") instruction.");
         console.log(theSVG);
+        //Identify the circles
+        var theCircles = document.querySelectorAll("#mySVG circle");
+        console.log("This is the result of the document.querySelector(\"#mySVG circle\") instruction.");
+        console.log(theCircles);
     </script>
 </body>
 
