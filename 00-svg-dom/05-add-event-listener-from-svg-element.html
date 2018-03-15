@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Manipulate SVG after an Event from SVG element</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+
+    <!-- Own style -->
+    <style>
+        svg {
+            border: 1px solid #999;
+        }
+
+        footer img {
+            max-height: 3rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="jumbotron">
+            <div class="container">
+                <h1>Manipulate SVG after an Event from SVG element</h1>
+                <p class="lead">Since the SVG elements can be identified in the DOM, we can attach event listener directly to them as well.
+                    Click on the circles as if the SVG was a target to see the score increment according to which circle
+                    you have clicked.</p>
+                <p class="text-center display-4 bg-success text-white p-3">
+                    Score:
+                    <span id="myScore">0</span>
+                </p>
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <div>
+            <svg viewBox="0 0 100 100" id="mySVG">
+                <circle cx="50" cy="50" r="40" fill="blue" id="outerCircle" />
+                <circle cx="50" cy="50" r="25" fill="red" id="mediumCircle" />
+                <circle cx="50" cy="50" r="10" fill="yellow" id="innerCircle" />
+            </svg>
+        </div>
+    </div>
+    <footer class="mb-5">
+        <div class="container">
+            <hr>
+            <div class="row">
+                <div class="col-sm-4 text-left">
+                    <a href="http://tecfa.unige.ch/perso/mafritz">
+                        <img src="../assets/images/maf-logo.svg" class="img-responsive">
+                    </a>
+                </div>
+                <div class="col-sm-4 text-center">
+                    Last update: 15/03/2018
+                </div>
+                <div class="col-sm-4 text-right">
+                    <a href="http://tecfa.unige.ch">
+                        <img src="../assets/images/tecfa-logo.svg" class="img-responsive">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- JavaScript -->
+    <script>
+        //Identify the circles
+        var theCircles = {
+            outer: document.querySelector("#outerCircle"),
+            medium: document.querySelector("#mediumCircle"),
+            inner: document.querySelector("#innerCircle")
+        }
+        //Identify the score
+        var theScore = document.querySelector("#myScore");
+        //Create a function to update the score
+        function updateScore(increment) {
+            var newScore = Number(theScore.textContent) + increment;
+            theScore.textContent = newScore;
+        }
+        //Add event listeners to the circles
+        theCircles.outer.addEventListener("click", function () {
+            updateScore(10);
+        });
+
+        theCircles.medium.addEventListener("click", function () {
+            updateScore(25);
+        });
+
+        theCircles.inner.addEventListener("click", function () {
+            updateScore(50);
+        });
+    </script>
+</body>
+
+</html>
