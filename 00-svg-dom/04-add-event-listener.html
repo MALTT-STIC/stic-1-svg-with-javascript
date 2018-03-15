@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Simple integration of an SVG into the DOM</title>
+    <title>Manipulate SVG after an Event</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -27,19 +27,22 @@
     <header>
         <div class="jumbotron">
             <div class="container">
-                <h1>Simple integration of an SVG into the DOM</h1>
-                <p class="lead">The element below is an SVG graphic.
-                    <strong>Open the console of your browser</strong> with
-                    <kbd>F12</kbd> to see how you can access it through JavaScript. </p>
+                <h1>Manipulate SVG after an Event</h1>
+                <p class="lead">As it is the case for HTML/JavaScript, it is possible to modify SVG elements after an Event. Click on the
+                    button below to
+                    <strong>randomly</strong> modify the colors of the circles.</p>
+                <p class="text-center">
+                    <button class="btn-lg btn-primary" id="switchColorBtn">Random circles' colors</button>
+                </p>
             </div>
         </div>
     </header>
     <div class="container">
         <div>
             <svg viewBox="0 0 100 100" id="mySVG">
-                <circle cx="50" cy="50" r="40" fill="blue" />
-                <circle cx="50" cy="50" r="25" fill="red" />
-                <circle cx="50" cy="50" r="10" fill="yellow" />
+                <circle cx="50" cy="50" r="40" fill="blue" id="outerCircle" />
+                <circle cx="50" cy="50" r="25" fill="red" id="mediumCircle" />
+                <circle cx="50" cy="50" r="10" fill="yellow" id="innerCircle" />
             </svg>
         </div>
     </div>
@@ -65,14 +68,25 @@
     </footer>
     <!-- JavaScript -->
     <script>
-        //Identify the element and print it to the console
-        var theSVG = document.querySelector("#mySVG");
-        console.log("This is the result of the document.querySelector(\"#mySVG\") instruction.");
-        console.log(theSVG);
         //Identify the circles
-        var theCircles = document.querySelectorAll("#mySVG circle");
-        console.log("This is the result of the document.querySelector(\"#mySVG circle\") instruction.");
-        console.log(theCircles);
+        var theCircles = {
+            outer: document.querySelector("#outerCircle"),
+            medium: document.querySelector("#mediumCircle"),
+            inner: document.querySelector("#innerCircle")
+        }
+        //Generate a random rgb color, from http://webdesignnomad.com/snippets/random-color-javascript/
+        function random_rgb() {
+            return 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(
+                Math.random() * 256)) + ')';
+        }
+        //Identify the button and add an event listener
+        var theButton = document.querySelector("#switchColorBtn");
+        theButton.addEventListener("click", function () {
+            //Modify the color of the circles with JavaScript
+            theCircles.outer.setAttribute("fill", random_rgb());
+            theCircles.medium.setAttribute("fill", random_rgb());
+            theCircles.inner.setAttribute("fill", random_rgb());
+        });
     </script>
 </body>
 
